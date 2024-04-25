@@ -1,11 +1,14 @@
-// import Swal from "sweetalert2";
 import Button from "../components/Button";
 import Title from "../components/Title";
 import BackToHomeNav from "../components/BackToHomeNav";
+import { useLoaderData } from "react-router-dom";
 
-const AddCoffeePage = () => {
-  const handleAddCoffee = (e) => {
-    e.preventDefault()
+const UpdateCoffeePage = () => {
+  const coffee = useLoaderData();
+  const { _id, name, chef, supplier, taste, category, details, photo } = coffee;
+    
+  const handleUpdateCoffee = (e) => {
+    e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const chef = form.chef.value;
@@ -15,19 +18,21 @@ const AddCoffeePage = () => {
     const details = form.details.value;
     const photo = form.photo.value;
 
-    const newCoffee = { name, chef, supplier, taste, category, details, photo };
+    const updatedCoffee = { name, chef, supplier, taste, category, details, photo };
+    console.log(updatedCoffee);
 
-    fetch('http://localhost:5000/coffees', {
-        method: 'POST',
+    // update coffee
+    fetch(`http://localhost:5000/coffees/${_id}`, {
+        method: 'PUT',
         headers: {'content-type': 'application/json'},
-        body: JSON.stringify(newCoffee)
+        body: JSON.stringify(updatedCoffee)
     })
     .then(res => res.json())
     .then(data => {
         console.log(data);
     })
-  }
-    
+  };
+
   return (
     <section className="">
       {/* Form card */}
@@ -38,7 +43,7 @@ const AddCoffeePage = () => {
         <div className="bg-[#F4F3F0] rounded-xl py-14">
           {/* form title and lead */}
           <div className="max-w-4xl mx-auto text-center space-y-6">
-            <Title>Add New Coffee</Title>
+            <Title>Update existing Coffee</Title>
             <p className="text-lg text-[#1B1A1AB2]">
               It is a long established fact that a reader will be distraceted by
               the readable content of a page when looking at its layout. The
@@ -46,10 +51,9 @@ const AddCoffeePage = () => {
               distribution of letters, as opposed to using Content here.
             </p>
           </div>
-
           {/* Coffee add form */}
           <form
-            onSubmit={handleAddCoffee}
+            onSubmit={handleUpdateCoffee}
             className="grid sm:grid-cols-2 gap-6 p-4 mt-8 max-w-5xl mx-auto"
           >
             <label className="form-control w-full">
@@ -62,6 +66,7 @@ const AddCoffeePage = () => {
                 type="text"
                 name="name"
                 placeholder="Coffee name"
+                defaultValue={name}
                 className="input w-full"
                 required
               />
@@ -74,6 +79,7 @@ const AddCoffeePage = () => {
                 type="text"
                 name="chef"
                 placeholder="Enter coffee chef"
+                defaultValue={chef}
                 className="input w-full"
                 required
               />
@@ -89,6 +95,7 @@ const AddCoffeePage = () => {
                 type="text"
                 name="supplier"
                 placeholder="Enter coffee supplier"
+                defaultValue={supplier}
                 className="input w-full"
                 required
               />
@@ -101,6 +108,7 @@ const AddCoffeePage = () => {
                 type="text"
                 name="taste"
                 placeholder="Enter coffee taste"
+                defaultValue={taste}
                 className="input w-full"
                 required
               />
@@ -114,6 +122,7 @@ const AddCoffeePage = () => {
                 type="text"
                 name="category"
                 placeholder="Enter coffee category"
+                defaultValue={category}
                 className="input w-full"
                 required
               />
@@ -126,6 +135,7 @@ const AddCoffeePage = () => {
                 type="text"
                 name="details"
                 placeholder="Enter coffee details"
+                defaultValue={details}
                 className="input w-full"
                 required
               />
@@ -139,11 +149,19 @@ const AddCoffeePage = () => {
                 type="text"
                 name="photo"
                 placeholder="Enter photo URL"
+                defaultValue={photo}
                 className="input w-full"
                 required
               />
             </label>
-            <Button type='submit' className="col-span-full">Add Coffee</Button>
+            {/* <input
+              type="submit"
+              value="Add coffee"
+              className="btn btn-block col-span-full bg-[#D2B48C]"
+            /> */}
+            <Button type="submit" className="col-span-full">
+              Update Coffee
+            </Button>
           </form>
         </div>
       </div>
@@ -151,4 +169,4 @@ const AddCoffeePage = () => {
   );
 };
 
-export default AddCoffeePage;
+export default UpdateCoffeePage;

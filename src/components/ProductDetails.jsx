@@ -4,7 +4,7 @@ import Title from "./Title";
 
 const ProductDetails = () => {
   const coffee = useLoaderData();
-  const { _id, name, chef, supplier, taste, category, details, photo } = coffee;
+  const { name, chef, supplier, taste, category, details, photo } = coffee;
 
   return (
     <section className="md:max-w-7xl mx-auto px-4">

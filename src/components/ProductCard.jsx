@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import { IoEye } from "react-icons/io5";
 import { MdEdit, MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 // import Swal from "sweetalert2";
 
 const ProductCard = ({coffee}) => {
-  const { _id, name, chef, supplier, taste, category, details, photo } = coffee;
+  const { _id, name, chef, taste, photo } = coffee;
 
   return (
     <div className="card card-side py-7 bg-[#F5F4F1]">
@@ -27,7 +28,8 @@ const ProductCard = ({coffee}) => {
           <Link to={`/coffees/${_id}`} className="btn btn-square bg-[#D2B48C] text-white">
             <IoEye size={20} />
           </Link>
-          <Link
+          <Link 
+            to={`/update-coffee/${_id}`}
             className="btn btn-square bg-gray-700 text-white"
           >
             <MdEdit size={20} />
