@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 const Banner = () => {
   return (
     <section className="bg-banner-bg h-[50rem]">
@@ -11,9 +13,10 @@ const Banner = () => {
             nostalgia back!! Your companion of every moment!!! Enjoy the
             beautiful moments and make them memorable.
           </p>
-          <button className="bg-primary px-4 py-1 rounded-md font-display text-xl">
+          {/* <button className="bg-primary px-4 py-1 rounded-md font-display text-xl">
             Learn more
-          </button>
+          </button> */}
+          <Button>Learn more</Button>
         </div>
       </div>
     </section>
