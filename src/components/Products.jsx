@@ -4,8 +4,10 @@ import Button from "./Button";
 import { FaCoffee } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
+import useProductsData from "../hooks/useProductsData";
 
-const Products = ({coffees}) => {
+const Products = () => {
+  const {coffees, refetchData} = useProductsData();
   
   return (
     <section className="my-28">
@@ -25,7 +27,7 @@ const Products = ({coffees}) => {
         {/* Product container */}
         <div className="grid md:grid-cols-2 gap-6 mt-12">
           {coffees.map(coffee => (
-            <ProductCard key={coffee._id} coffee={coffee} />
+            <ProductCard key={coffee._id} coffee={coffee} refetch={refetchData} />
           ))}
         </div>
       </div>

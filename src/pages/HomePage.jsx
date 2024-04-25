@@ -4,13 +4,13 @@ import Features from "../components/Features";
 import Products from "../components/Products";
 
 const HomePage = () => {
-  const coffees = useLoaderData();
+  // const coffees = useLoaderData();
   
   return (
     <>
       <Banner />
       <Features />
-      <Products coffees={coffees} />
+      <Products />
     </>
   );
 };
