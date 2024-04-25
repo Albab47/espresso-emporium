@@ -1,11 +1,12 @@
 import Button from "../components/Button";
 import Title from "../components/Title";
 import BackToHomeNav from "../components/BackToHomeNav";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const UpdateCoffeePage = () => {
   const coffee = useLoaderData();
   const { _id, name, chef, supplier, taste, category, details, photo } = coffee;
+  const navigate = useNavigate();
     
   const handleUpdateCoffee = (e) => {
     e.preventDefault();
@@ -29,7 +30,9 @@ const UpdateCoffeePage = () => {
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data);
+        if(data.modifiedCount === 1) {
+          navigate('/')
+        }
     })
   };
 
