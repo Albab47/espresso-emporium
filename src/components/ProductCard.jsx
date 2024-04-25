@@ -19,7 +19,7 @@ const ProductCard = ({ coffee, refetch }) => {
     })
     .then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/coffees/${_id}`, {
+        fetch(`https://espresso-emporium-server-zeta.vercel.app/coffees/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

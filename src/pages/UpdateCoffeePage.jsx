@@ -7,7 +7,7 @@ const UpdateCoffeePage = () => {
   const coffee = useLoaderData();
   const { _id, name, chef, supplier, taste, category, details, photo } = coffee;
   const navigate = useNavigate();
-    
+
   const handleUpdateCoffee = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -19,21 +19,29 @@ const UpdateCoffeePage = () => {
     const details = form.details.value;
     const photo = form.photo.value;
 
-    const updatedCoffee = { name, chef, supplier, taste, category, details, photo };
+    const updatedCoffee = {
+      name,
+      chef,
+      supplier,
+      taste,
+      category,
+      details,
+      photo,
+    };
     console.log(updatedCoffee);
 
     // update coffee
-    fetch(`http://localhost:5000/coffees/${_id}`, {
-        method: 'PUT',
-        headers: {'content-type': 'application/json'},
-        body: JSON.stringify(updatedCoffee)
+    fetch(`https://espresso-emporium-server-zeta.vercel.app/coffees/${_id}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(updatedCoffee),
     })
-    .then(res => res.json())
-    .then(data => {
-        if(data.modifiedCount === 1) {
-          navigate('/')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount === 1) {
+          navigate("/");
         }
-    })
+      });
   };
 
   return (

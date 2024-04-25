@@ -23,12 +23,12 @@ const router = createBrowserRouter([
       {
         path: "/coffees/:id",
         element: <ProductDetails />,
-        loader: ({params}) => fetch(`http://localhost:5000/coffees/${params.id}`)
+        loader: ({params}) => fetch(`https://espresso-emporium-server-zeta.vercel.app/coffees/${params.id}`)
       },
       {
         path: "/update-coffee/:id",
         element: <UpdateCoffeePage />,
-        loader: ({params}) => fetch(`http://localhost:5000/coffees/${params.id}`)
+        loader: ({params}) => fetch(`https://espresso-emporium-server-zeta.vercel.app/coffees/${params.id}`)
       },
     ],
   },

@@ -11,7 +11,7 @@ const useProductsData = () => {
 
   useEffect(() => {
     const fetchCoffees = async () => {
-      const apiURL = "http://localhost:5000/coffees";
+      const apiURL = "https://espresso-emporium-server-zeta.vercel.app/coffees";
       try {
         const res = await fetch(apiURL);
         const data = await res.json();
